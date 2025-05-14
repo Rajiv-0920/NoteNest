@@ -1,0 +1,259 @@
+/* Container */
+article {
+  scroll-behavior: smooth;
+}
+
+/* Headings */
+article h1,
+article h2,
+article h3,
+article h4,
+article h5,
+article h6 {
+  font-weight: 700;
+  color: #ff0b55;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  line-height: 1.25;
+}
+
+article h1 {
+  font-size: 2.125rem; /* 34px */
+}
+article h2 {
+  font-size: 1.875rem; /* 30px */
+}
+article h3 {
+  font-size: 1.5rem; /* 24px */
+}
+article h4 {
+  font-size: 1.25rem; /* 20px */
+}
+article h5 {
+  font-size: 1.125rem; /* 18px */
+}
+article h6 {
+  font-size: 1rem; /* 16px */
+}
+
+/* Paragraph and text */
+article p {
+  margin-bottom: 1.5rem;
+  line-height: 1.75;
+}
+
+/* Lists */
+article ul,
+article ol {
+  margin-bottom: 1.2rem;
+  padding-left: 1.5rem;
+  line-height: 1.75;
+}
+
+article ul {
+  list-style-type: disc;
+}
+
+article ol {
+  list-style-type: decimal;
+}
+
+article li {
+  padding-left: 0.25rem;
+}
+
+/* Inline code */
+article code {
+  background-color: #f3f4f6;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  font-family: "Fira Code", monospace;
+}
+
+/* Code block */
+article pre {
+  background-color: #f3f4f6;
+  padding: 1rem;
+  border-radius: 0.375rem;
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+}
+
+article pre code {
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  font-size: 0.875rem;
+}
+
+/* Blockquote */
+article blockquote {
+  border-left: 4px solid #ff0b55;
+  padding-left: 1rem;
+  margin-bottom: 1.5rem;
+  font-style: italic;
+  color: #555;
+}
+
+/* Links */
+article a {
+  color: #ff0b55;
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+article a:hover {
+  color: #c7003d;
+  text-decoration: none;
+}
+
+/* Tables */
+article table {
+  width: 100%;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-collapse: collapse;
+}
+
+article th,
+article td {
+  border: 1px solid #ddd;
+  padding: 0.75rem;
+  text-align: left;
+}
+
+article th {
+  background-color: #f3f4f6;
+  font-weight: 600;
+  color: #333;
+}
+
+article tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+article tr:hover {
+  background-color: #f1f1f1;
+}
+
+article hr {
+  color: #ddd;
+}
+
+/* Dark Mode */
+.dark article {
+  color: #e5e7eb;
+}
+
+.dark article code {
+  background-color: #1f2937;
+}
+
+.dark article pre {
+  background-color: #1f2937;
+}
+
+.dark article a {
+  color: #ff66a3;
+}
+
+.dark article a:hover {
+  color: #ff4085;
+}
+
+.dark article th {
+  background-color: #2f394b;
+  color: #f1f1f1;
+}
+
+.dark article tr:nth-child(even) {
+  background-color: #313f46;
+}
+
+.dark article tr:hover {
+  background-color: #444;
+}
+
+.dark article hr {
+  color: #1e2939;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  /* Headings scale down */
+  article h1 {
+    font-size: 1.75rem; /* ~28px */
+    margin-top: 1.5rem;
+  }
+
+  article h2 {
+    font-size: 1.5rem; /* 24px */
+    margin-top: 1.25rem;
+  }
+
+  article h3 {
+    font-size: 1.25rem; /* 20px */
+  }
+
+  article h4 {
+    font-size: 1.125rem; /* 18px */
+  }
+
+  article h5 {
+    font-size: 1rem; /* 16px */
+  }
+
+  article h6 {
+    font-size: 0.875rem; /* 14px */
+  }
+
+  /* Reduce paragraph margin and font size */
+  article p {
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+  }
+
+  /* Lists smaller padding */
+  article ul,
+  article ol {
+    padding-left: 1rem;
+  }
+
+  article li {
+    padding-left: 0.15rem;
+  }
+
+  /* Code smaller font, adjust padding */
+  article code {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.4rem;
+  }
+
+  article pre {
+    padding: 0.75rem;
+  }
+
+  article pre code {
+    font-size: 0.75rem;
+  }
+
+  /* Tables: enable horizontal scroll */
+  article table {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Blockquote smaller font and padding */
+  article blockquote {
+    font-size: 0.9rem;
+    padding-left: 0.75rem;
+  }
+
+  /* Reduce margins for hr for better spacing */
+  hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+}
