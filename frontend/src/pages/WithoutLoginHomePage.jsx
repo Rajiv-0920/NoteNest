@@ -34,12 +34,9 @@ export function WithoutLoginHomePage() {
           >
             About
           </a>
-          <a
-            href="auth.html"
-            className="text-sm font-medium hover:text-primary"
-          >
+          <Link to="login" className="text-sm font-medium hover:text-primary">
             Login
-          </a>
+          </Link>
         </nav>
         <Link
           to="signup"
