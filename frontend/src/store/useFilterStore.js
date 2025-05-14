@@ -7,13 +7,13 @@ const getFilteredAndSortedNotes = (notes, search, filter) => {
 
   if (filter === "1") {
     return [...filtered].sort(
-      (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
+      (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
     );
   }
 
   if (filter === "2") {
     return [...filtered].sort(
-      (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+      (a, b) => new Date(a.createdAt) - new Date(b.createdAt)
     );
   }
 
