@@ -8,6 +8,7 @@ import { PrivateRoute } from "./PrivateRoute.jsx";
 import { loginPageRoute } from "../pages/LoginPage.jsx";
 import { NavLayout } from "../layout/NavLayout.jsx";
 import ErrorPage from "../components/ErrorPage.jsx";
+import { WithoutLoginHomePage } from "../pages/WithoutLoginHomePage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -15,7 +16,8 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     errorElement: <ErrorPage />,
     children: [
-      { index: true, element: <Navigate to="/notes" replace /> },
+      // { index: true, element: <Navigate to="/notes" replace /> },
+      { index: true, element: <WithoutLoginHomePage /> },
       { path: "/login", ...loginPageRoute },
       { path: "/signup", ...signupPageRoute },
       {
