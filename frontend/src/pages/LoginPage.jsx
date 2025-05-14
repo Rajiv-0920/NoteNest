@@ -141,7 +141,7 @@ async function action({ request }) {
       .then((res) => res.data);
     localStorage.setItem("jwtToken", res.data.token);
     toast.success(res.message);
-    return redirect("/");
+    return redirect("/notes");
   } catch (error) {
     toast.error(error.response?.data?.message);
     return null;
