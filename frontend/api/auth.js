@@ -45,8 +45,6 @@ export const googleLogin = async () => {
 export const googleLogout = async () => {
   try {
     await signOut(auth);
-    console.log("Signed out");
-    // Clear user from state/store
   } catch (error) {
     console.error("Sign out error:", error);
   }
