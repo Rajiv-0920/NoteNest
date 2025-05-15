@@ -14,11 +14,11 @@ export function Header() {
 
   const navigate = useNavigate();
   async function handleLogout() {
-    localStorage.removeItem("jwtToken"); // Clear your JWT if stored
-    logout(); // Call backend logout if needed (optional)
+    localStorage.removeItem("jwtToken");
+    logout();
     googleLogout();
     toast.success("Logged out successfully.");
-    navigate("/login"); // Redirect to login
+    navigate("/");
   }
 
   return (

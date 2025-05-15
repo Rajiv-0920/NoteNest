@@ -9,6 +9,7 @@ import {
 import { toast } from "sonner";
 import { baseApi } from "../../api/base";
 import { googleLogin } from "../../api/auth.js";
+import { PublicRoute } from "../routes/PrivateRoute.jsx";
 
 function LoginPage() {
   const emailRef = useRef();
@@ -150,5 +151,9 @@ async function action({ request }) {
 
 export const loginPageRoute = {
   action,
-  element: <LoginPage />,
+  element: (
+    <PublicRoute>
+      <LoginPage />
+    </PublicRoute>
+  ),
 };

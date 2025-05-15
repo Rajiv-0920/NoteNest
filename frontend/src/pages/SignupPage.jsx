@@ -1,6 +1,7 @@
 import { Form, Link, redirect } from "react-router-dom";
 import { toast } from "sonner";
 import { baseApi } from "../../api/base";
+import { PublicRoute } from "../routes/PrivateRoute";
 
 function SignupPage() {
   return (
@@ -114,5 +115,9 @@ async function action({ request }) {
 
 export const signupPageRoute = {
   action,
-  element: <SignupPage />,
+  element: (
+    <PublicRoute>
+      <SignupPage />
+    </PublicRoute>
+  ),
 };

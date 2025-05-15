@@ -1,7 +1,13 @@
 import { useEffect, useState } from "react";
 import { marked } from "marked";
 import "../markdownPreview.css";
-import { Form, Link, redirect, useLoaderData } from "react-router-dom";
+import {
+  Form,
+  Link,
+  redirect,
+  useLoaderData,
+  useNavigation,
+} from "react-router-dom";
 import { createNotes, getNote, updateNotes } from "../../api/notes";
 import { toast } from "sonner";
 import TurndownService from "turndown";
@@ -11,7 +17,6 @@ import { Box, Tab } from "@mui/material";
 import TabList from "@mui/lab/TabList";
 import { MarkdownGuide } from "../components/MarkdownGuide";
 import { MarkdownPreview } from "../components/MarkdownPreview";
-import { ThemeContext } from "@emotion/react";
 import useThemeStore from "../store/useThemeStore";
 
 export function NoteForm() {
@@ -22,6 +27,7 @@ export function NoteForm() {
   const note = loaderData?.data;
   const [title, setTitle] = useState("");
   const { theme } = useThemeStore();
+  const { state } = useNavigation();
 
   useEffect(() => {
     if (note) {
@@ -95,6 +101,7 @@ export function NoteForm() {
               <input
                 type="submit"
                 value="Save"
+                {...(state === "submitting" ? { disabled: true } : {})}
                 className="px-4 py-2 bg-primary text-white rounded-md hover:bg-opacity-90"
               />
             </div>
