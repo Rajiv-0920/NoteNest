@@ -61,7 +61,7 @@ export function NoteForm() {
           {/* Left: Editor */}
           <Form method="post" className="flex-1 space-y-6 w-full">
             <h1 className="text-3xl font-bold text-primary mb-6 select-none">
-              {note ? "Update Note" : "Write a Note"}
+              {id ? "Update Note" : "Write a Note"}
             </h1>
 
             {/* Title */}
