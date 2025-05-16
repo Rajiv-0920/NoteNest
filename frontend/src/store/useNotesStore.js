@@ -22,7 +22,7 @@ const getFilteredAndSortedNotes = (notes, search, filter) => {
   return filtered;
 };
 
-const useNotesStoreTest = create((set) => ({
+const useNotesStore = create((set) => ({
   notes: [],
   note: {},
   filteredNotes: [],
@@ -87,4 +87,4 @@ const useNotesStoreTest = create((set) => ({
     })),
 }));
 
-export default useNotesStoreTest;
+export default useNotesStore;

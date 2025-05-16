@@ -5,11 +5,11 @@ import { ScrollRestoration, useParams } from "react-router-dom";
 import { formatDate } from "../lib/utils";
 import { marked } from "marked";
 import { useEffect, useState } from "react";
-import useNotesStoreTest from "../store/useNotesStore";
+import useNotesStore from "../store/useNotesStore";
 
 function Note() {
   const { id } = useParams();
-  const { note, getNote, isNoteLoading } = useNotesStoreTest();
+  const { note, getNote, isNoteLoading } = useNotesStore();
   const [content, setContent] = useState("");
 
   useEffect(() => {

@@ -4,10 +4,10 @@ import { NoNotesPage } from "../components/NoNotesPage";
 import { NotesCardPage } from "../components/NotesCardPage";
 import { MainSkeletonLayout } from "../skeleton/MainSkeletonLayout";
 import { useEffect } from "react";
-import useNotesStoreTest from "../store/useNotesStore";
+import useNotesStore from "../store/useNotesStore";
 
 function HomePage() {
-  const { notes, getNotes, isNotesLoading } = useNotesStoreTest();
+  const { notes, getNotes, isNotesLoading } = useNotesStore();
 
   useEffect(() => {
     getNotes();

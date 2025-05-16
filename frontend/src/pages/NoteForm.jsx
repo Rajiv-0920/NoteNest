@@ -17,7 +17,7 @@ import TabList from "@mui/lab/TabList";
 import { MarkdownGuide } from "../components/MarkdownGuide";
 import { MarkdownPreview } from "../components/MarkdownPreview";
 import useThemeStore from "../store/useThemeStore";
-import useNotesStoreTest from "../store/useNotesStore";
+import useNotesStore from "../store/useNotesStore";
 import html2md from "html-to-md";
 
 export function NoteForm() {
@@ -29,7 +29,7 @@ export function NoteForm() {
   const { state } = useNavigation();
 
   const { id } = useParams();
-  const { note, getNote } = useNotesStoreTest();
+  const { note, getNote } = useNotesStore();
 
   useEffect(() => {
     if (id) {
