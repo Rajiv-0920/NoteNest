@@ -1,12 +1,19 @@
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import NoteCard from "./NoteCard";
-import useNotesStore from "../store/useFilterStore";
 import NoSearchResult from "./NoSearchResult";
+import useNotesStoreTest from "../store/useNotesStore";
+import { useEffect } from "react";
 
-export function NotesCardPage({ notes }) {
-  const { search, filter, showNotes, setSearch, setFilter, setNotes } =
-    useNotesStore();
+export function NotesCardPage() {
+  const {
+    notes,
+    filteredNotes,
+    search,
+    setSearch,
+    filter,
+    setFilter,
+    setNotes,
+  } = useNotesStoreTest();
 
   useEffect(() => {
     setNotes(notes);
@@ -29,9 +36,6 @@ export function NotesCardPage({ notes }) {
             value={filter}
             className="rounded-md border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 px-5 py-3"
           >
-            <option value="" disabled>
-              Sort by date
-            </option>
             <option value="1">Newest First</option>
             <option value="2">Oldest First</option>
           </select>
@@ -44,9 +48,9 @@ export function NotesCardPage({ notes }) {
         </div>
       </header>
 
-      {showNotes.length ? (
+      {filteredNotes.length ? (
         <section className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {showNotes.map((note) => (
+          {filteredNotes.map((note) => (
             <NoteCard key={note._id} {...note} />
           ))}
         </section>

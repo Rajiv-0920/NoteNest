@@ -1,6 +1,8 @@
+import useNotesStoreTest from "../store/useNotesStore";
 import NoteCardSkeleton from "./NoteCardSkeleton";
 
 export function MainSkeletonLayout() {
+  const { notes } = useNotesStoreTest();
   return (
     <main className="flex-grow w-full max-w-screen-xl mx-auto sm:px-8 lg:px-10 py-8">
       <header className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-10 space-y-6 sm:space-y-0">
@@ -13,7 +15,7 @@ export function MainSkeletonLayout() {
       </header>
 
       <section className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {[...Array(7)].map((_, i) => (
+        {[...Array(notes.length || 10)].map((_, i) => (
           <NoteCardSkeleton key={i} />
         ))}
       </section>

@@ -1,31 +1,25 @@
-import { redirect, useLoaderData, useNavigation } from "react-router-dom";
+import { redirect } from "react-router-dom";
 import { getNotes } from "../../api/notes";
 import { NoNotesPage } from "../components/NoNotesPage";
 import { NotesCardPage } from "../components/NotesCardPage";
 import { MainSkeletonLayout } from "../skeleton/MainSkeletonLayout";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import useNotesStoreTest from "../store/useNotesStore";
 
 function HomePage() {
-  const loaderData = useLoaderData();
-  const notes = loaderData.data;
-
-  const { state } = useNavigation();
-  const [loading, setLoading] = useState(true);
+  const { notes, getNotes, isNotesLoading } = useNotesStoreTest();
 
   useEffect(() => {
-    const timeout = setTimeout(() => setLoading(false), 500);
-    return () => clearTimeout(timeout);
-  }, []);
+    getNotes();
+  }, [getNotes]);
+
+  if (isNotesLoading) {
+    return <MainSkeletonLayout />;
+  }
 
   return (
     <div className="flex-grow  mx-auto w-full px-4 flex flex-col justify-center items-center select-none">
-      {notes.length === 0 ? (
-        <NoNotesPage />
-      ) : state === "loading" || loading ? (
-        <MainSkeletonLayout />
-      ) : (
-        <NotesCardPage notes={notes} />
-      )}
+      {notes.length === 0 ? <NoNotesPage /> : <NotesCardPage notes={notes} />}
     </div>
   );
 }

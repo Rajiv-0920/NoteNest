@@ -3,9 +3,8 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { Link, useNavigate } from "react-router-dom";
-import { deleteNote } from "../../api/notes";
-import { toast } from "sonner";
 import { IconButton } from "@mui/material";
+import useNotesStoreTest from "../store/useNotesStore";
 
 export function MenuBtn({ id, isPrintable }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -16,9 +15,10 @@ export function MenuBtn({ id, isPrintable }) {
     setAnchorEl(event.currentTarget);
   };
 
-  async function handleDelete() {
-    toast.success("Your note has been deleted!");
-    await deleteNote(id);
+  const { deleteNote } = useNotesStoreTest();
+
+  function handleDelete() {
+    deleteNote(id);
     navigate("/notes");
   }
 

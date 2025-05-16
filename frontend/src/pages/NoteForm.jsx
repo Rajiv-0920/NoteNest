@@ -5,12 +5,11 @@ import {
   Form,
   Link,
   redirect,
-  useLoaderData,
   useNavigation,
+  useParams,
 } from "react-router-dom";
-import { createNotes, getNote, updateNotes } from "../../api/notes";
+import { createNotes, updateNotes } from "../../api/notes";
 import { toast } from "sonner";
-import TurndownService from "turndown";
 import TabPanel from "@mui/lab/TabPanel";
 import TabContext from "@mui/lab/TabContext";
 import { Box, Tab } from "@mui/material";
@@ -18,29 +17,37 @@ import TabList from "@mui/lab/TabList";
 import { MarkdownGuide } from "../components/MarkdownGuide";
 import { MarkdownPreview } from "../components/MarkdownPreview";
 import useThemeStore from "../store/useThemeStore";
+import useNotesStoreTest from "../store/useNotesStore";
+import html2md from "html-to-md";
 
 export function NoteForm() {
   const [value, setValue] = useState("1");
   const [content, setContent] = useState("");
   const [previewContent, setPreviewContent] = useState("");
-  const loaderData = useLoaderData();
-  const note = loaderData?.data;
   const [title, setTitle] = useState("");
   const { theme } = useThemeStore();
   const { state } = useNavigation();
 
-  useEffect(() => {
-    if (note) {
-      const turndownService = new TurndownService();
-      setTitle(note.title);
-      const md = turndownService.turndown(note.content);
-      setContent(md);
-    }
-  }, [note]);
+  const { id } = useParams();
+  const { note, getNote } = useNotesStoreTest();
 
   useEffect(() => {
-    const htmlCode = marked.parse(content);
-    setPreviewContent(htmlCode);
+    if (id) {
+      getNote(id);
+    }
+  }, [id, getNote]);
+
+  useEffect(() => {
+    if (id && note?.title && note?.content) {
+      setTitle(note.title);
+      const md = html2md(note.content);
+      setContent(md);
+    }
+  }, [note, id]);
+
+  useEffect(() => {
+    const html = marked.parse(content || "");
+    setPreviewContent(html);
   }, [content]);
 
   const handleChange = (_, newValue) => {
@@ -102,7 +109,7 @@ export function NoteForm() {
                 type="submit"
                 value="Save"
                 {...(state === "submitting" ? { disabled: true } : {})}
-                className="px-4 py-2 bg-primary text-white rounded-md hover:bg-opacity-90"
+                className="px-4 py-2 bg-primary text-white rounded-md hover:bg-opacity-90 disabled:opacity-50"
               />
             </div>
           </Form>
@@ -115,12 +122,12 @@ export function NoteForm() {
                   <Tab
                     label="Preview"
                     value="1"
-                    style={{ color: theme === "dark" ? "white" : "" }}
+                    style={{ color: theme === "light" ? "" : "white" }}
                   />
                   <Tab
                     label="Guide"
                     value="2"
-                    style={{ color: theme === "dark" ? "white" : "" }}
+                    style={{ color: theme === "light" ? "" : "white" }}
                   />
                 </TabList>
               </Box>
@@ -163,16 +170,7 @@ async function action({ request, params }) {
   }
 }
 
-async function loader({ params }) {
-  if (params?.id) {
-    const res = await getNote(params.id);
-    return res;
-  }
-  return null;
-}
-
 export const noteFormRoute = {
   action,
-  loader,
   element: <NoteForm />,
 };
