@@ -16,7 +16,7 @@ pids
 
 # dotenv environment variables
 .env
-.env.*
+**/.env.*
 .env.*.local
 
 # Firebase service account credentials
