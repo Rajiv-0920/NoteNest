@@ -1,11 +1,17 @@
-import admin from "firebase-admin";
+import admin from 'firebase-admin'
+import dotenv from 'dotenv'
+
+dotenv.config() // This line is crucial to load the .env file
+
+const serviceAccount = {
+  projectId: process.env.FIREBASE_PROJECT_ID,
+  clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+  // This replace handles the newline characters in the private key
+  privateKey: process.env.FIREBASE_PRIVATE_KEY.replace(/\\n/g, '\n'),
+}
 
 admin.initializeApp({
-  credential: admin.credential.cert({
-    projectId: process.env.FIREBASE_PROJECT_ID,
-    clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
-    privateKey: process.env.FIREBASE_PRIVATE_KEY,
-  }),
-});
+  credential: admin.credential.cert(serviceAccount),
+})
 
-export default admin;
+export default admin
