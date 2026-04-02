@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: 'https://note-nest-pied.vercel.app/',
+    origin: 'https://note-nest-pied.vercel.app',
     credentials: true,
   }),
 );
@@ -21,14 +21,6 @@ const __dirname = path.resolve();
 
 app.use('/api/auth', authRoutes);
 app.use('/api/notes', noteRoutes);
-
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static(path.join(__dirname, '/frontend/dist')));
-
-  app.get('*name', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'frontend', 'dist', 'index.html'));
-  });
-}
 
 app.listen(PORT, () => {
   connectDB();
