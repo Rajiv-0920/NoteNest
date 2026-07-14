@@ -13,7 +13,7 @@ app.use(cookieParser());
 
 const allowedOrigins = [
   'http://localhost:5173',
-  '', // frontend - vercel
+  'https://note-nest-nu-two.vercel.app', // frontend - vercel
 ];
 
 app.use(
