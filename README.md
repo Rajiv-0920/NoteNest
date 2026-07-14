@@ -2,7 +2,7 @@
 
 NoteNest is a full-stack note-taking application that allows users to create, manage, and delete notes securely. Built with the MERN stack (MongoDB, Express, React, Node.js) and Firebase for authentication, NoteNest offers a clean, intuitive interface with key features like dark/light themes and a responsive design.
 
-🔗 **Live Site**: [NoteNest](https://notenest-nzr0.onrender.com/)
+🔗 **Live Site**: [NoteNest](https://note-nest-nu-two.vercel.app/)
 
 ![Template](./screenshot/template.png)
 
