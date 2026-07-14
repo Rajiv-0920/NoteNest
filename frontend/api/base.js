@@ -4,6 +4,7 @@ import { getAuth } from 'firebase/auth';
 // 1. Create the base instance
 export const baseApi = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
+  withCredentials: true,
   // You can remove withCredentials: true if you aren't using custom backend cookies
 });
 
